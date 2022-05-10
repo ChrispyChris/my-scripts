@@ -1,11 +1,15 @@
 #!/bin/bash
 
-for file in *; do
-  ffmpeg -i "$file" -ab 320k -map_metadata 0 -id3v2_version 3 "${file%%.flac}.mp3";
+echo "Mpegscript Music File Converter"
+echo "Input file type, either flac or m4a."
+read filetype
+
+# Convert lossless files to 320kb mp3 files and change the file extension. 
+# Also copy over the ID3 tags.
+for file in *."${filetype}"
+do
+  ffmpeg -i "$file" -ab 320k -map_metadata 0 -id3v2_version 3 "${file%.${filetype}}.mp3";
 done
 
-rm *.flac
-
-for file in *; do
-  mv "$file" "${file##+([0-9])@(. | - )}";
-done
+# Remove lossless files.
+rm *."${filetype}"
