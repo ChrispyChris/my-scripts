@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for file in *.mp3; do
+  mv "$file" "$(echo $file | sed -E 's/^[0-9]+(\. | \- | |- )\.*//')"
+done

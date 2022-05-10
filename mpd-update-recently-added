@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Remove the old playlist to prepare for the new playlist.
+rm /home/chris/.mpd/playlists/recently-added.m3u
+
+# Write new songs to the playlist file.
+while read line
+do
+  sed -n 's/.* added \(.*\)\/\(.*\)\/\(.*.mp3\)/\/mnt\/music\/\1\/\2\/\3/p' \
+  >> /home/chris/.mpd/playlists/recently-added.m3u
+done < /home/chris/.mpd/mpd.log
+
+# Clean the log so that next time the script is run, it will only write
+# newly added songs to the playlist.
+echo "" > /home/chris/.mpd/mpd.log

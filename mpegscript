@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for file in *; do
+  ffmpeg -i "$file" -ab 320k -map_metadata 0 -id3v2_version 3 "${file%%.flac}.mp3";
+done
+
+rm *.flac
+
+for file in *; do
+  mv "$file" "${file##+([0-9])@(. | - )}";
+done

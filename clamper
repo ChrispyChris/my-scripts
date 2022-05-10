@@ -1,0 +1,25 @@
+#!/bin/lua
+
+--[[------------------------------------
+--
+--  CSS Text Clamper
+--
+--]]------------------------------------
+
+print("Enter: min_width_rem max_width_rem min_font_size max_font_size")
+local min_width_pixels, max_width_pixels,
+      min_font_size, max_font_size = io.read("*n", "*n", "*n", "*n")
+
+local pixels_per_rem = 16
+min_font_size = min_font_size / pixels_per_rem
+max_font_size = max_font_size / pixels_per_rem
+local min_width = min_width_pixels / pixels_per_rem
+local max_width = max_width_pixels / pixels_per_rem
+
+local slope = (max_font_size - min_font_size) / (max_width - min_width)
+local y_axis_intersection = -min_width * slope + min_font_size
+
+local clamp_value = "font-size: clamp(" .. min_font_size .. "rem, " .. y_axis_intersection .. "rem + " ..
+                   string.format("%.5f", slope * 100) .. "vw, " .. max_font_size .. "rem);\n"
+
+io.write(clamp_value)

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Run this script as root, if you haven't, run the script again!"
+echo "Which device is the Walkman? Skip the /dev/, just input the partition."
+read mountpoint
+if [ ! -d "/mnt/walkman" ]
+then
+    mkdir "/mnt/walkman"
+fi
+sudo mount -t exfat -o uid=1000,gid=1000,rw "/dev/$mountpoint" "/mnt/walkman"
+echo "The Sony Walkman is now mounted."
