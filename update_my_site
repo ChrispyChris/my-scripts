@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rsync -rvz --delete -e "ssh -i /home/chris/.ssh/linode-web-hoster -p 65128" --progress /home/chris/Development/Websites/chriswoodtech/build/ chris@173.255.248.58:/var/www/chriswoodtech
+
+echo "Site update complete!"
