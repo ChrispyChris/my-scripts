@@ -6,7 +6,7 @@
 --
 --]]------------------------------------
 
-print("Enter: min_width_rem max_width_rem min_font_size max_font_size")
+print("Enter: min_width_px max_width_px min_font_size_px max_font_size_px")
 local min_width_pixels, max_width_pixels,
       min_font_size, max_font_size = io.read("*n", "*n", "*n", "*n")
 
