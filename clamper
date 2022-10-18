@@ -19,7 +19,7 @@ local max_width = max_width_pixels / pixels_per_rem
 local slope = (max_font_size - min_font_size) / (max_width - min_width)
 local y_axis_intersection = -min_width * slope + min_font_size
 
-local clamp_value = "font-size: clamp(" .. min_font_size .. "rem, " .. y_axis_intersection .. "rem + " ..
+local clamp_value = "clamp(" .. min_font_size .. "rem, " .. y_axis_intersection .. "rem + " ..
                    string.format("%.5f", slope * 100) .. "vw, " .. max_font_size .. "rem);\n"
 
 io.write(clamp_value)
