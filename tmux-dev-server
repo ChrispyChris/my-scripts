@@ -15,5 +15,6 @@ then
     tmux split-window -t "${window_1}" -c ${dev_directory} -h
     tmux send-keys "git status" enter
     tmux new-window -c ${dev_directory} -n ${window_2}
+    tmux send-keys "nvim" enter
     tmux attach-session -t ${dev_session}
 fi
