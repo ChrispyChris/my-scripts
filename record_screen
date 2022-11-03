@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Please enter a file name for the video output: "
+read output_file
+
+echo "Thank you! Now recording and outputting to: ${output_file}"
+
+ffmpeg -f x11grab -y -framerate 30 -s 1920x1080 -i :0.0 \
+-pix_fmt yuv420p -c:v libx264 -preset superfast -crf 18 /home/chris/Downloads/${output_file}.mkv
