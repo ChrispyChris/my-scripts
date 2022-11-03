@@ -11,9 +11,9 @@ if [[ ${session_exists} = "" ]]
 then
     tmux new-session -d -s "${dev_session}" -c ${dev_directory} 
     tmux rename-window -t 0 "${window_1}"
-    tmux send-keys -t "${window_1}" "npm run dev" enter
+    tmux send-keys -t "${window_1}" "pnpm run dev" enter
     tmux split-window -t "${window_1}" -c ${dev_directory} -h
-    tmux send-keys "git status" enter
+    tmux send-keys "git status; clear;" enter
     tmux new-window -c ${dev_directory} -n ${window_2}
     tmux send-keys "nvim" enter
     tmux attach-session -t ${dev_session}
