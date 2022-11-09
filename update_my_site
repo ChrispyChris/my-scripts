@@ -1,5 +1,5 @@
 #!/bin/bash
 
-rsync -rvzu --delete -e "ssh -i /home/chris/.ssh/linode-web-hoster -p 65128" --progress /home/chris/Development/Websites/chriswoodtech/build/ chris@linode:/var/www/chriswoodtech
+rsync -rvzu --delete -e "ssh -i /home/chris/.ssh/linode-web-hoster -p 65128" --progress /home/chris/Development/Websites/chriswoodtech/public /home/chris/Development/Websites/chriswoodtech/server-build chris@linode:/var/www/chriswoodtech
 
 echo "Site update complete!"
