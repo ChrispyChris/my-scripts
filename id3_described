@@ -1,0 +1,19 @@
+#!/bin/bash
+
+for file in ./*.mp3
+do
+  if [[ $(eyeD3 "$file" | grep -x "Description: FRONT_COVER") = "Description: FRONT_COVER" ]]
+  then
+    echo "${file%.mp3} is described!"
+  else
+    echo "${file%.mp3} is NOT described! Would you like to add a description?"
+    read -r
+    if [[ ${REPLY} =~ (y|Y|yes|Yes) ]]
+    then
+      echo "Adding description to file!"
+      kid3-cli -c "select '$file'" -c "set picture.Description 'FRONT_COVER'" -c "save"
+    else 
+      echo "The description was not added."
+    fi
+  fi
+done
